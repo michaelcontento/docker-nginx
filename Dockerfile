@@ -16,6 +16,8 @@ RUN CFG="/etc/nginx/nginx.conf" \
     && sed -i -e '0,/include sites/s//include conf.d\/*.conf;\n  include sites/' $CFG \
     && sed -i -e 's/error_log .*/error_log \/dev\/stderr warn;/' $CFG \
     && sed -i -e 's/access_log .*/access_log \/dev\/stdout main;/' $CFG \
+    && CFG="/etc/nginx/h5bp/location/expires.conf" \
+    && sed -i -e 's/access_log .*/access_log \/dev\/stdout main;/' $CFG \
     && ln -s ../sites-available/no-default /etc/nginx/sites-enabled/
 
 # define some missing volumes similar to dockerfiles/ngnix

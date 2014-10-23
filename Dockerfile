@@ -20,6 +20,9 @@ RUN CFG="/etc/nginx/nginx.conf" \
     && sed -i -e 's/access_log .*/access_log \/dev\/stdout main;/' $CFG \
     && ln -s ../sites-available/no-default /etc/nginx/sites-enabled/
 
+# poor man's CI
+RUN nginx -t 2>&1
+
 # define some missing volumes similar to dockerfiles/ngnix
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d"]
 

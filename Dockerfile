@@ -22,3 +22,7 @@ RUN CFG="/etc/nginx/nginx.conf" \
 
 # define some missing volumes similar to dockerfiles/ngnix
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d"]
+
+ADD run-nginx.bash /usr/local/bin/run-nginx
+ENTRYPOINT ["run-nginx"]
+CMD []
